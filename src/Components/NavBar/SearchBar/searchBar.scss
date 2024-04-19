@@ -1,0 +1,51 @@
+@import "/src/_colors.scss";
+@import "/src/responsive.scss";
+
+.form-container{
+    button{
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    .upper-portion{
+        button{
+            text-transform: capitalize;
+            border: 1px solid black;
+            background-color: white;
+            border-radius: 2px;
+            padding: 16px 32px;
+            border-bottom: none;
+            font-weight: 600;
+        }
+        .activeType{
+            background-color: black;
+            color:white
+        }
+    }  
+    form{
+        width: 90%;
+        border: 1px solid gray;
+        display: flex;
+        flex-direction: row;
+        @include sm(){
+            flex-direction: column;
+            width: 90vw;
+        }
+        button{
+            border: none;
+            padding: 8px 20px;
+            background-color: $yellowButtonColor;
+            img{
+                width: 22px;
+            }
+        }
+        input{
+            border: none;
+            padding: 18px 9px;
+            width: 35%;
+            @include sm(){
+                width: 95%;
+            }
+        }
+    }
+}
