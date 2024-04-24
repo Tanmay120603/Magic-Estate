@@ -1,0 +1,16 @@
+.leaflet-popup-content-wrapper {
+    padding: 0px;
+    overflow: hidden;
+}
+.leaflet-popup-content{
+    margin: 0px;
+    padding: 12px;
+    a{
+        color: black;
+    }
+    img{
+        width: 200px;
+        height: 100px;
+        object-fit: cover;
+    }
+}
