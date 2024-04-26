@@ -3,6 +3,7 @@ import RootLayout from "./layout/Rootlayout"
 import HomePage from "./pages/Home/HomePage"
 import ListPage from "./pages/List/ListPage"
 import SinglePostPage from "./pages/singlePost/SinglePostPage"
+import ProfilePage from "./pages/Profile/ProfilePage"
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
     <Route path="/" element={<HomePage></HomePage>}></Route>
     <Route path="/list" element={<ListPage></ListPage>}></Route>
     <Route path="/list/:id" element={<SinglePostPage></SinglePostPage>}></Route>
+    <Route path="/profile" element={<ProfilePage></ProfilePage>}></Route>
   </Route>))
 
   return (

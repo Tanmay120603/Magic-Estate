@@ -1,0 +1,9 @@
+@mixin linkCss($bgColor){
+    background-color: $bgColor;
+    color: black;
+    text-decoration: none;
+    position: relative;
+    padding: 10px 16px;
+    border-radius: 2px;
+    margin-right: 20px;
+}

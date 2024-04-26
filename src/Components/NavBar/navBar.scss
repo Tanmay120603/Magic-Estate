@@ -1,5 +1,6 @@
 @import "/../Real-Estate-App/src/responsive.scss";
 @import "/src/_colors.scss";
+@import "/design_template.scss";
 
 nav{
     width: 100%;
@@ -82,6 +83,40 @@ nav{
             padding: 18px 20px;
             align-items: flex-start;
         }
+        .logged-user{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            img{
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+                @include sm(){
+                    margin-right: -25px;
+                }
+            }
+            span{
+                font-weight: 600;
+                @include sm(){
+                    display: none;
+                }
+            }
+            .notification{
+                width: 26px;
+                height: 26px;
+                border-radius: 50%;
+                background-color: red;
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                top: -8px;
+                right: -8px;
+                color: white;
+            }
+        }
         .hamburger-menu{
             display: none;
             img{
@@ -117,11 +152,8 @@ nav{
             }
         }
 
-        .sign-up{
-            background-color:$buttonPrimaryColor;
-            padding: 10px 16px;
-            border-radius: 2px;
-            margin-right: 20px;
+        .link-css{
+            @include linkCss($buttonPrimaryColor);
         }
     }
 }

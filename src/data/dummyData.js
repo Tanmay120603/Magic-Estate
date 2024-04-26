@@ -99,6 +99,7 @@ export const listData = [
   
   export const singlePostData = {
     id: 1,
+    type:"rent",
     title: "Beautiful Apartment",
     price: 1200,
     images: [
@@ -107,7 +108,7 @@ export const listData = [
       "https://images.pexels.com/photos/2062426/pexels-photo-2062426.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       "https://images.pexels.com/photos/2467285/pexels-photo-2467285.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     ],
-    bedRooms: 2,
+    bedroom: 2,
     bathroom: 1,
     size: 861,
     latitude: 51.5074,

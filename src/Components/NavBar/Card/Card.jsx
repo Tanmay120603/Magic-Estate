@@ -6,10 +6,10 @@ function Card({id,title,img,bedroom,bathroom,price,address,latitude,longitude,ha
     return(
         <div className="card-container">
             <div className="card-left-section">
-                <Link to={`${id}`}><img src={img} alt={title}></img></Link>
+                <Link to={`/list/${id}`}><img src={img} alt={title}></img></Link>
             </div>
             <div className="card-right-section">
-                <h1 onClick={()=>handleFlyToHouse({id,img,title,latitude,longitude,bedroom,price})}>{title}</h1>
+                <h1 onClick={()=>handleFlyToHouse && handleFlyToHouse({id,img,title,latitude,longitude,bedroom,price})}>{title}</h1>
                 <div className="address-container">
                     <img src="/pin.png" alt="pin-image"></img>
                     <span>{address}</span>
@@ -32,7 +32,7 @@ function Card({id,title,img,bedroom,bathroom,price,address,latitude,longitude,ha
                     </div>
                 </div>
                 <div className="card-lower-bottom">
-                    <Link to={`${id}`}>See Details <span>&rarr;</span></Link>
+                    <Link to={`/list/${id}`}>See Details <span>&rarr;</span></Link>
                 </div>
             </div>
         </div>

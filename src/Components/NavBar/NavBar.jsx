@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom"
 import "./navBar.scss"
 import { useState } from "react"
+import { userData } from "../../data/dummyData";
 
 function NavBar(){
 
     const [openSideBar,setOpenSideBar]=useState(false)
+    const user=true;
 
     return(
             <nav>
@@ -19,8 +21,12 @@ function NavBar(){
                     <Link to={"/"}>Agents</Link>
                 </div>
                 <div className="right-nav">
-                    <Link to={"/"}>Sign in</Link>
-                    <Link className="sign-up" to={"/"}>Sign up</Link>
+                    {user ? <div className="logged-user">
+                        <img className="user-image" src={userData.img} alt="avatar-image" />
+                        <span>{userData.name}</span>
+                        <Link to={"/profile"} className="link-css">Profile<span className="notification">3</span></Link>
+                    </div> : <><Link to={"/"}>Sign in</Link>
+                    <Link className="link-css" to={"/"}>Sign up</Link></>}
                     <div className="hamburger-menu" onClick={()=>setOpenSideBar(!openSideBar)}>
                         <img src="/menu.png" alt="menu" />
                     </div>

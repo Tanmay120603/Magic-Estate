@@ -12,10 +12,14 @@ function setMarkerLayer(list,leafletMap){
     list?.map(item=>{
         switch(item.type){
             case "buy":
-                buyMarkerArr.push(marker([item.latitude,item.longitude],{icon:buyIcon}).bindPopup(getPopupContent(item)))
+                const buyMarker=marker([item.latitude,item.longitude],{icon:buyIcon})
+                item.img && buyMarker.bindPopup(getPopupContent(item))
+                buyMarkerArr.push(buyMarker)
                 break
             case "rent":
-                rentMarkerArr.push(marker([item.latitude,item.longitude],{icon:rentIcon}).bindPopup(getPopupContent(item)))
+                const rentMarker=marker([item.latitude,item.longitude],{icon:rentIcon})
+                item.img && rentMarker.bindPopup(getPopupContent(item))
+                rentMarkerArr.push(rentMarker)
                 break
         }
     })
