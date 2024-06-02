@@ -1,3 +1,5 @@
+@import "/src/responsive.scss";
+
 @mixin linkCss($bgColor){
     background-color: $bgColor;
     color: black;
@@ -6,4 +8,9 @@
     padding: 10px 16px;
     border-radius: 2px;
     margin-right: 20px;
+    @include sm{
+        font-size: 14px;
+        padding: 6px 10px;
+        margin-right: 0px;
+    }
 }

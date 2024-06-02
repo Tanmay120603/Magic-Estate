@@ -1,4 +1,5 @@
 @import "/src/colors";
+@import "/src/responsive.scss";
 
 .filter-container{
     width: 100%;
@@ -6,11 +7,16 @@
     flex-direction: column;
     gap: 10px;
     margin-bottom: 50px;
+    @include md{
+        align-items: center;
+    }
     h1{
         font-size: 24px;
-        line-height: 0px;
         font-weight: 200;
         font-family: Arial, Helvetica, sans-serif;
+        @include md{
+            text-align: center;
+        }
         span{
             font-weight: 600;
         }
@@ -18,20 +24,34 @@
 
     label{
         font-size: 12px;
+        @include md{
+            text-align: start;
+        }
     }
     .top-filter-section{
         display: flex;
         flex-direction: column;
         gap: 1px;
         width: 100%;
-        input{
-            padding: 10px 8px;
-            width: 98%;
+        @include sm{
+            align-items: center;
+        }
+        @include md{
+            gap: 2px;
+        }
+        .autocomplete-container{
+            background-color: aliceblue;
         }
     }
     .bottom-filter-section{
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
+        @include md{
+            justify-content: center;
+            column-gap: 15px;
+            row-gap: 10px;
+        }
         div{
             display: flex;
             flex-direction: column;
@@ -47,17 +67,30 @@
             input{
                 width: 60px;
                 padding: 8px;
+                @include md{
+                    padding: 8px 4px;
+                }
             }
         }
         button{
             padding: 6px 28px;
             background-color: $buttonPrimaryColor;
             border: none;
+            @include md{
+                width: 100%;
+            }
+            @include sm{
+                width: 90%;
+                border-radius: 6px;
+            }
             &:hover{
                 cursor: pointer;
             }
             img{
                 width: 24px;
+                @include md{
+                    width: 20px;
+                }
             }
         }
     }

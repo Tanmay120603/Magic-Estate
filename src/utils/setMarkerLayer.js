@@ -9,6 +9,8 @@ function setMarkerLayer(list,leafletMap){
     const buyIcon=icon({iconUrl:buyMarkerUrl,iconSize:[30,30]})
     const rentIcon=icon({iconUrl:rentMarkerUrl,iconSize:[30,30]})
 
+    if(!leafletMap)return[]
+
     list?.map(item=>{
         switch(item.type){
             case "buy":

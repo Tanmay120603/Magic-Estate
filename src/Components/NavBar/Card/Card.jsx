@@ -1,18 +1,24 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import "./card.scss"
 
-function Card({id,title,img,bedroom,bathroom,price,address,latitude,longitude,handleFlyToHouse}){
+function Card({_id,title,images,bedroom,bathroom,price,address,latitude,longitude,handleFlyToHouse}){
+
+    const navigate=useNavigate()
+
+    function handleClick(){
+        handleFlyToHouse ? handleFlyToHouse({_id,img:images[0],title,latitude,longitude,bedroom,price}) : navigate(`/list/${_id}`)   
+    }
 
     return(
         <div className="card-container">
             <div className="card-left-section">
-                <Link to={`/list/${id}`}><img src={img} alt={title}></img></Link>
+                <Link to={`/list/${_id}`}><img src={images[0] || "https://www.its.ac.id/tmesin/wp-content/uploads/sites/22/2022/07/no-image.png"} alt={title}></img></Link>
             </div>
             <div className="card-right-section">
-                <h1 onClick={()=>handleFlyToHouse && handleFlyToHouse({id,img,title,latitude,longitude,bedroom,price})}>{title}</h1>
+                <h1 onClick={handleClick}>{title}</h1>
                 <div className="address-container">
                     <img src="/pin.png" alt="pin-image"></img>
-                    <span>{address}</span>
+                    <span>{address.slice(0,45)+"..."}</span>
                 </div>
                 <span className="price">$ {price}</span>
                 <div className="card-upper-bottom">
@@ -26,13 +32,9 @@ function Card({id,title,img,bedroom,bathroom,price,address,latitude,longitude,ha
                             <span>{bathroom} bathroom</span>
                         </div>
                     </div>
-                    <div className="right-section">
-                        <div><img src="/save.png" alt="save"></img></div>
-                        <div><img src="/chat.png" alt="chat"></img></div>
-                    </div>
                 </div>
                 <div className="card-lower-bottom">
-                    <Link to={`/list/${id}`}>See Details <span>&rarr;</span></Link>
+                    <Link to={`/list/${_id}`}>See Details <span>&rarr;</span></Link>
                 </div>
             </div>
         </div>

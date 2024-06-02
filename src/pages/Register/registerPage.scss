@@ -1,0 +1,37 @@
+@import "../../responsive.scss";
+@import url('https://fonts.googleapis.com/css2?family=Alegreya&family=Poppins&display=swap');
+
+.register-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    .left-register-section{
+        flex: 3;
+        .register-error{
+            color: red;
+            font-size: 20px;
+            font-family: "Alegreya", serif;
+        }
+        @include sm{
+            display: flex;
+            justify-content: center;
+        }
+    }
+    .right-register-section{
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        flex: 2;
+        background-color: antiquewhite;
+        img{
+            position: absolute;
+            right: 0px;
+            width: 110%;
+        }
+        @include sm{
+            display: none;
+        }
+    }
+}

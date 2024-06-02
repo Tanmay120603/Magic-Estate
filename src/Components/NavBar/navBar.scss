@@ -11,6 +11,25 @@ nav{
     @include sm(){
         align-items: flex-start;
     }
+    .notification{
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background-color: red;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: -8px;
+        right: -8px;
+        color: white;
+        @include sm{
+            width: 22px;
+            height: 22px;
+            top: -5px;
+            right: -20px;
+        }
+    }
     a{
         color: black;
         text-decoration: none;
@@ -103,19 +122,6 @@ nav{
                     display: none;
                 }
             }
-            .notification{
-                width: 26px;
-                height: 26px;
-                border-radius: 50%;
-                background-color: red;
-                position: absolute;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                top: -8px;
-                right: -8px;
-                color: white;
-            }
         }
         .hamburger-menu{
             display: none;
@@ -125,13 +131,15 @@ nav{
             }
             @include sm(){
                 display: initial;
-                z-index: 50;
+                position: relative;
+                z-index: 20000;
             }
         }
 
         .menu-list{
             display: none;
             a{
+                position: relative;
                 display: initial;
                 color: white;
                 font-size: 18px;
@@ -147,7 +155,7 @@ nav{
                 gap: 40px;
                 align-items: center;
                 background-color: black;
-                z-index: 40;
+                z-index: 10000;
                 transition: all 0.3s ease;
             }
         }

@@ -1,17 +1,30 @@
 import Card from "../../Components/NavBar/Card/Card"
 import Filter from "../../Components/NavBar/Filter/Filter"
 import Map from "../../Components/NavBar/Map/Map"
-import { listData } from "../../data/dummyData"
 import { useState } from "react"
 import "./listPage.scss"
 import { popup } from "leaflet"
 import getPopupContent from "../../utils/getPopupContent"
+import { useQuery } from "@tanstack/react-query"
+import axios from "axios"
+import { ShimmerPostList } from "react-shimmer-effects"
+import getQueryParamString from "../../utils/getQueryParamString"
+import Loader from "../../Components/NavBar/Loader/Loader"
+import { useSearchParams } from "react-router-dom"
 
 function ListPage(){
     
+    const [searchParams,setSearchParams]=useSearchParams()
+    const [filterParams,setFilterParams]=useState(Object.fromEntries(searchParams.entries()))
     const [map,setMap]=useState()
-    const [filters,setFilters]=useState({type:""})
-    const [list,setList]=useState(listData)
+    const {isPending,error,data:posts,isFetching}=useQuery({
+        queryKey:["posts"],
+        queryFn:async()=>{
+            const filterQuery=getQueryParamString(filterParams)
+            const response=await axios.get(import.meta.env.VITE_SERVER_ENDPOINT+"/api/posts"+filterQuery)
+            return response.data
+        },staleTime:0
+    })
 
     function handleFlyToHouse(houseData){
         const lat=houseData.latitude
@@ -22,18 +35,29 @@ function ListPage(){
         },3000)
     }
 
+    if(isPending)return<ShimmerPostList></ShimmerPostList>
+
+    if(error)return<div>{error.response.data.message}</div>
+
     return(
+        <>
+        {isFetching && <Loader></Loader>}
         <div className="listPage-container">
             <div className="listContainer">
                 <div className="wrapper">
-                <Filter list={listData} setList={setList} setFilters={setFilters}></Filter>
-                {list.map(data=><Card handleFlyToHouse={handleFlyToHouse} key={data.id} {...data}></Card>)}
+                <Filter list={posts} filterParams={filterParams} setSearchParams={setSearchParams} setFilterParams={setFilterParams}></Filter>
+                {posts.length==0 && <div className="no-result-container">
+                    <img src="/no-results.png" alt="no-results"/>
+                    <span>No match found</span>
+                </div>}  
+                {posts.map(post=><Card handleFlyToHouse={handleFlyToHouse} key={post["_id"]} {...post}></Card>)}
                 </div>
             </div>
             <div className="mapContainer">
-                <Map List={list} map={map} filters={filters} setMap={setMap}></Map>
+                <Map List={posts} map={map} setMap={setMap}></Map>
             </div>
         </div>
+        </>
     )
 }
 

@@ -1,0 +1,13 @@
+.default-styling{
+    width: 100%;
+label{
+    text-transform: capitalize;
+}
+select{
+    width: 100%;
+    padding: 8px;
+    option{
+        text-transform: capitalize;
+    }
+}
+}

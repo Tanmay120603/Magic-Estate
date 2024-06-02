@@ -1,0 +1,54 @@
+@import "/src/responsive.scss";
+
+.input-autocomplete-container{
+    position: relative;
+    width: 100%;
+    display: flex;
+    border: 1px solid black;
+    @include sm{
+        width: 95%;
+    }
+    .autoCompleteField{
+        padding: 10px 0px;
+        width: 95%;
+        margin-left: 10px;
+        border:none;
+        &:focus{
+            outline: none;
+        }
+        @include md{
+            width: 90%;
+        }
+    }
+    .loading-autocomplete{
+        position: absolute;
+        right: 10px;
+        top: 25%;
+        z-index: 2;
+    }
+    .cancel-text{
+        position: absolute;
+        right: 10px;
+        top: 25%;
+        z-index: 2;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    .autocomplete-container{
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid black;
+        span{
+            width: 100%;
+            padding: 4px 0px;
+            border-bottom: 1px solid black;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}

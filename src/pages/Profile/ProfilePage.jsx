@@ -1,10 +1,44 @@
 import List from "../../Components/NavBar/List/List"
-import { listData, userData } from "../../data/dummyData"
-import { Link } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import "./profilePage.scss"
 import Chat from "../../Components/NavBar/Chat/Chat"
+import { useContext, useState } from "react"
+import { UserAuthContext } from "../../Context/UserAuth"
+import axios from "axios"
+import { toast } from "react-toastify"
+import Message from "../../Components/NavBar/Message/Message"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
 
 function ProfilePage(){
+    const {userAuth,updateUser}=useContext(UserAuthContext)
+    const navigate=useNavigate()
+    const queryClient=useQueryClient()
+    const {state}=useLocation()
+    const [isLoading,setIsLoading]=useState(false)
+    const [chatId,setChatId]=useState(state)
+    const {data:chats,isFetching,error}=useQuery({queryKey:["chats"],queryFn:async()=>{
+        const response=await axios.get(import.meta.env.VITE_SERVER_ENDPOINT+"/api/chats",{withCredentials:true})
+        console.log(response.data)
+        return response.data
+    }})
+
+    async function handleLogout(){
+        setIsLoading(true)
+        try{
+        await axios.post(import.meta.env.VITE_SERVER_ENDPOINT+"/api/auth/logout",{message:"Try for loggout"},{withCredentials:true})
+        updateUser(null)
+        queryClient.invalidateQueries(["chats"])
+        queryClient.invalidateQueries(["chat"])
+        navigate("/")
+        }
+        catch{
+            toast.error('Something went wrong',{autoClose:1500});
+        }
+        finally{
+            setIsLoading(false)
+        }
+    }
+
     return(
         <div className="profile-page-container">
             <div className="user-related-container">
@@ -12,39 +46,34 @@ function ProfilePage(){
                 <div className="user-info">
                     <div className="top-section">
                         <h2>User Information</h2>
-                        <Link to={""} className="link-css">Update Profile</Link>
+                        <Link to={"/update/profile"} className="link-css">Update Profile</Link>
                     </div>
                     <div className="bottom-section">
-                        <div>Avatar: <img src={userData.img} alt="avatar-image"/></div>
-                        <div>Username: <span>{userData.name}</span></div>
-                        <div>E-mail: <span>johnDoe@gmail.com</span></div>
+                        <div>Avatar: <img src={userAuth.avatar } alt="avatar-image"/></div>
+                        <div>Username: <span>{userAuth.username}</span></div>
+                        <div>E-mail: <span>{userAuth.email}</span></div>
+                        <button onClick={handleLogout}>{isLoading ? "loading.." : "Logout"}</button>
                     </div>
                 </div>
                 <div className="my-list">
                     <div className="top-section">
                         <h2>My List</h2>
-                        <Link to="" className="link-css">Create New Post</Link>
+                        <Link to="/add/post" className="link-css">Create New Post</Link>
                     </div>
-                        <List listData={listData}></List>
+                        <List requestEndpoint={import.meta.env.VITE_SERVER_ENDPOINT+"/api/users/post/created"} queryKey={[userAuth.username,"createdPost"]}></List>
                 </div>
                 <div className="saved-list">
-                    <h2>Saved List</h2>
-                    <List listData={listData}></List>
+                    <h2 className="saved-list-header">Saved List</h2>
+                    <List requestEndpoint={import.meta.env.VITE_SERVER_ENDPOINT+"/api/users/post/saved"} queryKey={[userAuth.username,"savedPost"]}></List>
                 </div>
                 </div>
             </div>
             <div className="chat-related-container">
                 <div className="messages-container">
-                    <h1>Messages</h1>
-                    {new Array(7).fill(0,0).map((item,index)=>
-                        <div className="message-container" key={index}>
-                            <img src={userData.img} alt="avatar-image" />
-                            <span>{userData.name}</span>
-                            <p>Lorem ipsum dolor sit amet.</p>
-                        </div>
-                    )}
+                    <div className="message-heading"><h1>Messages</h1></div>
+                    {isFetching ? <span>Loading</span> : chats?.map(chat=><Message key={chat["_id"]} setChatId={setChatId} {...chat}></Message>)}
                 </div>
-                <Chat></Chat>
+                {chatId && <Chat chatId={chatId} setChatId={setChatId}></Chat>}
             </div>
         </div>
     )

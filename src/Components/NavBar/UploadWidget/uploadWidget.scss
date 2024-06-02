@@ -1,0 +1,17 @@
+@import "../../../colors";
+
+.upload-button{
+    padding: 8px;
+    background-color: #03AED2;
+    color: white;
+    font-size: 16px;
+    border-radius: 2px;
+    border: none;
+    transition: 0.3s all ease;
+    &:hover{
+        cursor: pointer;
+        background-color: white;
+        color: #03AED2;
+        border: 1px solid #03AED2;
+    }
+}
