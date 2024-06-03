@@ -18,7 +18,7 @@ function List({queryKey,requestEndpoint}){
 
     return(
         <>  
-            {data.length==0 && <div className="no-result-container">
+            {data?.length==0 && <div className="no-result-container">
                 <img src="/no-results.png" alt="no-results"/>
                 <span>No Post Found</span>
             </div>}
