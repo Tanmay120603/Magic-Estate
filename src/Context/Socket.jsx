@@ -7,7 +7,7 @@ export const SocketContext=createContext()
 function Socket({children}){
     const {userAuth}=useContext(UserAuthContext)
     const [socketObj,setSocketObj]=useState()
-    const socket=io(import.meta.env.VITE_SERVER_ENDPOINT,{withCredentials:true})
+    const socket=io(import.meta.env.VITE_SERVER_ENDPOINT)
 
     useEffect(()=>{
         const socketDisconnect=function(){
