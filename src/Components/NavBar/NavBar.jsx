@@ -30,19 +30,19 @@ function NavBar(){
     return(
             <nav>
                 <div className="left-nav">
-                    <div className="logo">
+                    <Link to='/'><div className="logo">
                         <img src="/logo.png" alt="logo"></img>
                         <span>MagicEstate</span>
                     </div>
+                    </Link>
                     <Link to={"/"}>Home</Link>
                     <Link to={"/list"}>Property</Link>
-                    <Link to={"/contact"}>Contact</Link>
                     <Link to={"/about"}>About</Link>
                 </div>
                 <div className="right-nav">
                     
                     {userAuth ? <div className="logged-user">
-                        <img className="user-image" src={userAuth.avatar} alt="avatar-image" />
+                        <Link to={"/profile"}><img className="user-image" src={userAuth.avatar} alt="avatar-image" /></Link>
                         <span>{userAuth.username}</span>
                         <Link to={"/profile"} className="link-css">Profile{notificationsCount > 0 && <span className="notification">{notificationsCount}</span>}</Link>
                     </div> : <><Link to={"/login"}>Sign in</Link>
@@ -57,14 +57,12 @@ function NavBar(){
                     <>
                     <Link to={"/"}>Home</Link>
                     <Link to={"/list"}>Property</Link>
-                    <Link to={"/contact"}>Contact</Link>
                     <Link to={"/about"}>About</Link>
                     <Link to={"/profile"}>Profile{notificationsCount > 0 && <span className="notification">{notificationsCount}</span>}</Link>
                     </>  :
                     <>
                     <Link to={"/"}>Home</Link>
                     <Link to={"/list"}>Property</Link>
-                    <Link to={"/contact"}>Contact</Link>
                     <Link to={"/about"}>About</Link>
                     <Link to={"/login"}>Sign in</Link>
                     <Link to={"/register"}>Sign up</Link>

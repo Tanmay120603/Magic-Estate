@@ -4,7 +4,7 @@ import RequireAuth from "./layout/RequireAuth/RequireAuth"
 import { useContext } from "react"
 import { UserAuthContext } from "./Context/UserAuth"
 import Socket from "./Context/Socket"
-import { AddPostPage,About,Contact,HomePage,ListPage,LoginPage,ProfilePage,RegisterPage,SinglePostPage,UpdateProfilePage, ErrorPage } from "./pages"
+import { AddPostPage,About,HomePage,ListPage,LoginPage,ProfilePage,RegisterPage,SinglePostPage,UpdateProfilePage, ErrorPage } from "./pages"
 
 function App() {
 
@@ -13,7 +13,6 @@ function App() {
   <Route path="/" element={<RootLayout></RootLayout>}>
     <Route path="/" element={<HomePage></HomePage>}></Route>
     <Route path="/about" element={<About></About>}></Route>
-    <Route path="/contact" element={<Contact></Contact>}></Route>
     <Route path="/list" element={<ListPage></ListPage>}></Route>
     <Route path="/list/:id" element={<SinglePostPage></SinglePostPage>}></Route>
     <Route path="/profile" element={<RequireAuth><ProfilePage></ProfilePage></RequireAuth>}></Route>
