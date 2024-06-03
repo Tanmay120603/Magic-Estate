@@ -17,7 +17,7 @@ function Chat({chatId,setChatId}){
     const socket=useContext(SocketContext)
 
     const {data:chatDetails,isFetching,error}=useQuery({queryKey:["chat",chatId],queryFn:async()=>{
-        const response=await axios.patch(import.meta.env.VITE_SERVER_ENDPOINT+`api/chats/${chatId}`,{},{withCredentials:true})
+        const response=await axios.patch(import.meta.env.VITE_SERVER_ENDPOINT+`/api/chats/${chatId}`,{},{withCredentials:true})
         response.data.receiver=response.data.users[0]
         return response.data }})
 
@@ -48,7 +48,7 @@ function Chat({chatId,setChatId}){
         textBoxRef.current.value=""
         const messageObj={receiverId:chatDetails.receiver["_id"],content:message,chatId,createdAt:Date.now()}
         try{
-            const response=await axios.post(import.meta.env.VITE_SERVER_ENDPOINT+"api/messages/",messageObj,{withCredentials:true})
+            const response=await axios.post(import.meta.env.VITE_SERVER_ENDPOINT+"/api/messages/",messageObj,{withCredentials:true})
             queryClient.setQueryData(["chat",chatId],{...chatDetails,messages:[...chatDetails.messages,response.data]})
             queryClient.setQueryData(["chats"],(chats)=>chats.map(chat=>chat["_id"]===chatId ? {...chat,lastMessage:message} : chat))
             socket.emit("send-message",{chatId,receiverId:chatDetails.receiver?._id,messageObj:{...messageObj,messageId:response.data?._id}})

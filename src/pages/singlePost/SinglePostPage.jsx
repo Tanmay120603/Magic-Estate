@@ -18,7 +18,7 @@ function SinglePostPage(){
     const {isPending,error,data}=useQuery({
         queryKey:["postDetail",id],
         queryFn:async()=>{
-            const res=await axios.get(import.meta.env.VITE_SERVER_ENDPOINT+`api/posts/${id}`,{withCredentials:true})
+            const res=await axios.get(import.meta.env.VITE_SERVER_ENDPOINT+`/api/posts/${id}`,{withCredentials:true})
             return res.data        
         }
     })
@@ -26,7 +26,7 @@ function SinglePostPage(){
     async function handleSavePost(){
         if(!userAuth)return navigate("/login")
         try{
-        const res=await axios.post(import.meta.env.VITE_SERVER_ENDPOINT+"api/users/post/save",{postId:id},{withCredentials:true})
+        const res=await axios.post(import.meta.env.VITE_SERVER_ENDPOINT+"/api/users/post/save",{postId:id},{withCredentials:true})
         toast.success(res.data?.message,{autoClose:2000})
         queryClient.setQueryData(["postDetail",id],(prev)=>{
             return {...prev,saved:!prev.saved}
@@ -41,7 +41,7 @@ function SinglePostPage(){
     async function handleSend(){
         if(!userAuth)return navigate("/login")
         try{
-           const response=await axios.post(import.meta.env.VITE_SERVER_ENDPOINT+"api/chats",{receiverId:data?.user["_id"]},{withCredentials:true})
+           const response=await axios.post(import.meta.env.VITE_SERVER_ENDPOINT+"/api/chats",{receiverId:data?.user["_id"]},{withCredentials:true})
            navigate("/profile",{state:response.data?.chatId})
            queryClient.invalidateQueries(["chats"])
         }
