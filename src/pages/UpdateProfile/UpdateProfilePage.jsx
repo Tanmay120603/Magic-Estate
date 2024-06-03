@@ -16,7 +16,7 @@ function UpdateProfilePage(){
 
     async function handleUpdateUser(values){
         try{
-          const res=await axios.patch(import.meta.env.VITE_SERVER_ENDPOINT+`/api/users/${userAuth["_id"]}`,{...values,avatar},{withCredentials:true})
+          const res=await axios.patch(import.meta.env.VITE_SERVER_ENDPOINT+`api/users/${userAuth["_id"]}`,{...values,avatar},{withCredentials:true})
           updateUser(res.data["_doc"])
           navigate("/profile")
         }

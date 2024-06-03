@@ -15,14 +15,14 @@ function ProfilePage(){
     const [isLoading,setIsLoading]=useState(false)
     const [chatId,setChatId]=useState(state)
     const {data:chats,isFetching,error}=useQuery({queryKey:["chats"],queryFn:async()=>{
-        const response=await axios.get(import.meta.env.VITE_SERVER_ENDPOINT+"/api/chats",{withCredentials:true})
+        const response=await axios.get(import.meta.env.VITE_SERVER_ENDPOINT+"api/chats",{withCredentials:true})
         return response.data
     }})
 
     async function handleLogout(){
         setIsLoading(true)
         try{
-        await axios.post(import.meta.env.VITE_SERVER_ENDPOINT+"/api/auth/logout",{message:"Try for loggout"},{withCredentials:true})
+        await axios.post(import.meta.env.VITE_SERVER_ENDPOINT+"api/auth/logout",{message:"Try for loggout"},{withCredentials:true})
         updateUser(null)
         queryClient.invalidateQueries(["chats"])
         queryClient.invalidateQueries(["chat"])
@@ -57,11 +57,11 @@ function ProfilePage(){
                         <h2>My List</h2>
                         <Link to="/add/post" className="link-css">Create New Post</Link>
                     </div>
-                        <List requestEndpoint={import.meta.env.VITE_SERVER_ENDPOINT+"/api/users/post/created"} queryKey={[userAuth.username,"createdPost"]}></List>
+                        <List requestEndpoint={import.meta.env.VITE_SERVER_ENDPOINT+"api/users/post/created"} queryKey={[userAuth.username,"createdPost"]}></List>
                 </div>
                 <div className="saved-list">
                     <h2 className="saved-list-header">Saved List</h2>
-                    <List requestEndpoint={import.meta.env.VITE_SERVER_ENDPOINT+"/api/users/post/saved"} queryKey={[userAuth.username,"savedPost"]}></List>
+                    <List requestEndpoint={import.meta.env.VITE_SERVER_ENDPOINT+"api/users/post/saved"} queryKey={[userAuth.username,"savedPost"]}></List>
                 </div>
                 </div>
             </div>

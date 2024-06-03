@@ -26,7 +26,7 @@ function Filter({filterParams,setFilterParams,setSearchParams}){
             <h1>Search results for <span>{searchedAddress || "N/A"}</span></h1>
             <div className="top-filter-section">
             <label htmlFor="address">Address</label>
-            <AutoComplete filterParams={filterParams} setFilterParams={setFilterParams} reqEndPoint={import.meta.env.VITE_SERVER_ENDPOINT+"/api/posts/autocomplete"}></AutoComplete>
+            <AutoComplete filterParams={filterParams} setFilterParams={setFilterParams} reqEndPoint={import.meta.env.VITE_SERVER_ENDPOINT+"api/posts/autocomplete"}></AutoComplete>
             </div>
             <div className="bottom-filter-section">
             <div>

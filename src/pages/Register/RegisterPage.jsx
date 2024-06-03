@@ -17,7 +17,7 @@ function RegisterPage(){
     async function handleRegistration(values){
         setErrMsg()
         try{
-            const response=await axios.post(import.meta.env.VITE_SERVER_ENDPOINT+"/api/auth/register",values,{withCredentials:true})
+            const response=await axios.post(import.meta.env.VITE_SERVER_ENDPOINT+"api/auth/register",values,{withCredentials:true})
             updateUser(response.data)
             navigate(state || "/",{replace:true})    
         }

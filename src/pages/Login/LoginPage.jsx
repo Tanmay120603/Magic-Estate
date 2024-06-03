@@ -17,7 +17,7 @@ function LoginPage(){
     async function handleLogin(values){
         setErrMsg()
         try{
-            const response=await axios.post(import.meta.env.VITE_SERVER_ENDPOINT+"/api/auth/login",values,{withCredentials:true})
+            const response=await axios.post(import.meta.env.VITE_SERVER_ENDPOINT+"api/auth/login",values,{withCredentials:true})
             updateUser(response.data["_doc"])
             navigate(state || "/",{replace:true})
         }

@@ -30,7 +30,7 @@ function AddPostPage(){
             return setSubmitting(false)
         }
         try{
-            const response=await axios.post(import.meta.env.VITE_SERVER_ENDPOINT+"/api/posts",{...values,...locationDetails},{withCredentials:true})
+            const response=await axios.post(import.meta.env.VITE_SERVER_ENDPOINT+"api/posts",{...values,...locationDetails},{withCredentials:true})
             queryClient.invalidateQueries({queryKey:[userAuth.username,"createdPost"]})
             navigate(`/list/${response.data["postID"]}`)
         }

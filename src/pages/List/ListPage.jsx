@@ -18,7 +18,7 @@ function ListPage(){
         queryKey:["posts"],
         queryFn:async()=>{
             const filterQuery=getQueryParamString(filterParams)
-            const response=await axios.get(import.meta.env.VITE_SERVER_ENDPOINT+"/api/posts"+filterQuery)
+            const response=await axios.get(import.meta.env.VITE_SERVER_ENDPOINT+"api/posts"+filterQuery)
             return response.data
         },staleTime:0
     })
