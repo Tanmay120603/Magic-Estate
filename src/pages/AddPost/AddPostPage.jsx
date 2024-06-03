@@ -1,19 +1,15 @@
 import {useContext,useState} from "react"
-import MapTiler from "../../Components/NavBar/MapTiler/MapTiler"
 import getAddressFromLatAndLng from "../../utils/getAddressFromLatAndLng"
 import { toast } from "react-toastify"
 import { addPostInputFields, propertyTypes, userTypes,addPostInitialValues, petAllowance, utilitiesPolicy, depositPolicy } from "../../utils/constants"
 import { useFormik } from "formik"
 import { addPostValidationSchema } from "../../utils/validationSchema"
-import Select from "../../Components/NavBar/Select/Select"
 import axios from "axios"
-import TextEditor from "../../Components/NavBar/TextEditor/TextEditor"
-import Loader from "../../Components/NavBar/Loader/Loader"
 import "./addPostPage.scss"
-import UploadWidget from "../../Components/NavBar/UploadWidget/UploadWidget"
 import { useNavigate } from "react-router-dom"
 import { useQueryClient } from "@tanstack/react-query"
 import { UserAuthContext } from "../../Context/UserAuth"
+import {Loader,TextEditor,MapTiler,Select,UploadWidget} from "../../Components/"
 
 function AddPostPage(){
 

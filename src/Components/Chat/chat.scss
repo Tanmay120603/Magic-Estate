@@ -86,7 +86,9 @@
             background-color: #FFDA78;
             font-weight: 700;
             border: none;
-            cursor: pointer;
+            &:hover{
+                cursor: pointer;
+            }
         }
     }
 }

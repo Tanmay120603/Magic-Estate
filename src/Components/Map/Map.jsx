@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useState } from "react"
-import setLeafletMap from "../../../utils/setMap"
-import setMarkerLayer from "../../../utils/setMarkerLayer"
+import setLeafletMap from "../../utils/setMap"
+import setMarkerLayer from "../../utils/setMarkerLayer"
 import "leaflet/dist/leaflet.css"
 import "./map.scss"
 

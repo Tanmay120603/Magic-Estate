@@ -1,6 +1,6 @@
 import axios from "axios"
 import {useState,useRef} from "react"
-import getQueryParamString from "../../../utils/getQueryParamString"
+import getQueryParamString from "../../utils/getQueryParamString"
 import "./autoComplete.scss"
 import {ClipLoader} from "react-spinners"
 

@@ -3,7 +3,7 @@ import { GeocodingControl } from "@maptiler/geocoding-control/maptilersdk";
 import * as maptilersdk from '@maptiler/sdk';
 import "@maptiler/sdk/dist/maptiler-sdk.css"
 import "@maptiler/geocoding-control/style.css"
-import getCurrentLocation from "../../../utils/getCurrentLocation";
+import getCurrentLocation from "../../utils/getCurrentLocation";
 import "./mapTiler.scss";
 
 function MapTiler({handleDone,latLng}){

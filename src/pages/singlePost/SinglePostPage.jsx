@@ -1,6 +1,5 @@
-import Slider from "../../Components/NavBar/Slider/Slider"
+import {Slider,Map} from "../../Components/"
 import "./singlePostPage.scss"
-import Map from "../../Components/NavBar/Map/Map"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useNavigate, useParams } from "react-router-dom"
 import axios from "axios"

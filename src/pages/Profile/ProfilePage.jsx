@@ -1,12 +1,10 @@
-import List from "../../Components/NavBar/List/List"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import "./profilePage.scss"
-import Chat from "../../Components/NavBar/Chat/Chat"
 import { useContext, useState } from "react"
 import { UserAuthContext } from "../../Context/UserAuth"
 import axios from "axios"
 import { toast } from "react-toastify"
-import Message from "../../Components/NavBar/Message/Message"
+import {Message,Chat,List} from "../../Components/"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 
 function ProfilePage(){
@@ -18,7 +16,6 @@ function ProfilePage(){
     const [chatId,setChatId]=useState(state)
     const {data:chats,isFetching,error}=useQuery({queryKey:["chats"],queryFn:async()=>{
         const response=await axios.get(import.meta.env.VITE_SERVER_ENDPOINT+"/api/chats",{withCredentials:true})
-        console.log(response.data)
         return response.data
     }})
 

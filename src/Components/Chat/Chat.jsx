@@ -4,9 +4,9 @@ import TimeAgo from 'react-timeago'
 import axios from "axios"
 import { ShimmerCircularImage, ShimmerTitle } from "react-shimmer-effects"
 import { useContext, useEffect, useRef } from "react"
-import { UserAuthContext } from "../../../Context/UserAuth"
+import { UserAuthContext } from "../../Context/UserAuth"
 import { toast } from "react-toastify"
-import { SocketContext } from "../../../Context/Socket"
+import { SocketContext } from "../../Context/Socket"
 
 function Chat({chatId,setChatId}){
 

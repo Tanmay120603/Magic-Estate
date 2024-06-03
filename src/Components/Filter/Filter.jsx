@@ -1,4 +1,4 @@
-import { propertyTypes, userTypes } from "../../../utils/constants"
+import { propertyTypes, userTypes } from "../../utils/constants"
 import { useQueryClient } from "@tanstack/react-query"
 import "./filter.scss"
 import { toast } from "react-toastify"

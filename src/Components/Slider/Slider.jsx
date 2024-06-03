@@ -1,6 +1,6 @@
 import { useState } from "react"
 import "./slider.scss"
-import { noImageAvailableUrl } from "../../../utils/constants"
+import { noImageAvailableUrl } from "../../utils/constants"
 function Slider({images:postImages}){
     const [currentIndex,setCurrentIndex]=useState(0)
     const [openFullSlider,setOpenFullSlider]=useState(false)

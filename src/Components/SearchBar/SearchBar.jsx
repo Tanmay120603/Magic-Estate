@@ -1,7 +1,7 @@
 import "./searchBar.scss"
-import { userTypes } from "../../../utils/constants"
+import { userTypes } from "../../utils/constants"
 import { useNavigate, useSearchParams } from "react-router-dom"
-import getQueryParamString from "../../../utils/getQueryParamString"
+import getQueryParamString from "../../utils/getQueryParamString"
 import { toast } from "react-toastify"
 
 function SearchBar(){

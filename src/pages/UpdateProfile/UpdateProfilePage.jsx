@@ -1,10 +1,9 @@
 import "./updateProfilePage.scss";
 import { useContext, useState } from "react"
-import ValidationForm from "../../Components/NavBar/ValidationForm/ValidationForm"
+import { ValidationForm,UploadWidget } from "../../Components";
 import { UserAuthContext } from "../../Context/UserAuth"
 import { updateProfileInputFields } from "../../utils/constants"
 import axios from "axios"
-import UploadWidget from "../../Components/NavBar/UploadWidget/UploadWidget"
 import { toast } from "react-toastify"
 import { useNavigate } from "react-router-dom"
 import { updateProfileValidationSchema } from "../../utils/validationSchema"

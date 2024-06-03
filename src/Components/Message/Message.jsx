@@ -1,8 +1,8 @@
 import { useContext } from "react"
-import { decreaseCount } from "../../../store/notificationSlice"
+import { decreaseCount } from "../../store/notificationSlice"
 import { useDispatch } from "react-redux"
-import { SocketContext } from "../../../Context/Socket"
-import { UserAuthContext } from "../../../Context/UserAuth"
+import { SocketContext } from "../../Context/Socket"
+import { UserAuthContext } from "../../Context/UserAuth"
 import { useQueryClient } from "@tanstack/react-query"
 
 function Message({_id:chatId,users,messages,setChatId,lastMessage}){

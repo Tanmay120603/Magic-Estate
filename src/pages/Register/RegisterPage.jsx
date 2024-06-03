@@ -1,6 +1,6 @@
 import "./registerPage.scss";
 import axios from "axios"
-import ValidationForm from "../../Components/NavBar/ValidationForm/ValidationForm"
+import { ValidationForm } from "../../Components/";
 import { registerUserInputFields } from "../../utils/constants"
 import { useContext, useState } from "react"
 import { registerUserValidationSchema } from "../../utils/validationSchema"

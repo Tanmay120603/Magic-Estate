@@ -1,6 +1,3 @@
-import Card from "../../Components/NavBar/Card/Card"
-import Filter from "../../Components/NavBar/Filter/Filter"
-import Map from "../../Components/NavBar/Map/Map"
 import { useState } from "react"
 import "./listPage.scss"
 import { popup } from "leaflet"
@@ -9,8 +6,8 @@ import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 import { ShimmerPostList } from "react-shimmer-effects"
 import getQueryParamString from "../../utils/getQueryParamString"
-import Loader from "../../Components/NavBar/Loader/Loader"
 import { useSearchParams } from "react-router-dom"
+import {Card,Filter,Map,Loader} from "../../Components/"
 
 function ListPage(){
     

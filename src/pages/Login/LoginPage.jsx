@@ -1,12 +1,11 @@
 import { loginUserInputFields } from "../../utils/constants"
 import { loginUserValidationSchema } from "../../utils/validationSchema"
-import ValidationForm from "../../Components/NavBar/ValidationForm/ValidationForm"
+import {ValidationForm} from "../../Components/"
 import "./loginPage.scss"
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { useContext, useState } from "react"
 import { UserAuthContext } from "../../Context/UserAuth"
-import "./loginPage.scss";
 
 function LoginPage(){
 
