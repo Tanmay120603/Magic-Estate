@@ -18,7 +18,7 @@ function NavBar(){
         if(!userAuth)return
         async function getNotificationCount(){
             try{
-                const response=await axios.get(import.meta.env.VITE_SERVER_ENDPOINT+"/api/messages/unread/count",{withCredentials:true})
+                const response=await axios.get(import.meta.env.VITE_SERVER_ENDPOINT+"/api/messages/unread/count")
                 dispatch(setCount(response.data))
             }catch(err){
                 toast.error("Something went wrong",{autoClose:2000})

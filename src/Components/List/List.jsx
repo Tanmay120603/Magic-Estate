@@ -6,7 +6,7 @@ import { ShimmerContentBlock } from "react-shimmer-effects";
 function List({queryKey,requestEndpoint}){
 
     const {isFetching,data}=useQuery({queryKey,queryFn:async()=>{
-        const response=await axios.get(requestEndpoint,{withCredentials:true})
+        const response=await axios.get(requestEndpoint)
         return response.data
     }})
 
