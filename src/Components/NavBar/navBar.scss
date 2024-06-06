@@ -132,7 +132,7 @@ nav{
             @include sm(){
                 display: initial;
                 position: absolute;
-                z-index: 10;
+                z-index: 200000;
             }
         }
 

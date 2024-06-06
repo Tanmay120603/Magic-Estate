@@ -1,4 +1,5 @@
 @import "../../colors";
+@import "/src/responsive.scss";
 
 .maptiler-map{
     width: 100vw;
@@ -7,6 +8,9 @@
     top: 0px;
     z-index: 10;
     right: 0px;
+    @include sm{
+        height:100%;
+    }
     .maptiler-done-button{
         position: absolute;
         top: 10px;

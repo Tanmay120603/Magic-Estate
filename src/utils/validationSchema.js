@@ -17,14 +17,14 @@ const updateProfileValidationSchema=Yup.object({
 })
 
 const addPostValidationSchema=Yup.object({
-    title:Yup.string().required("Title can't be empty").min(3).max(40),
+    title:Yup.string().required("Title can't be empty").min(4).max(40),
     price:Yup.number().required("Price can't be empty").min(1),
     bedroom:Yup.number().required().min(1).max(50),
     bathroom:Yup.number().required().min(1).max(50),
     type:Yup.string().required("Please select rent or buy"),
     property:Yup.string().required("Please select property type"),
     desc:Yup.string().required().min(20),
-    size:Yup.number().required("Room size can't be empty").min(1),
+    size:Yup.number().required("Room size can't be empty").min(1).max(1000000),
     school:Yup.number().min(1),
     bus:Yup.number().min(1),
     restraunt:Yup.number().min(1),

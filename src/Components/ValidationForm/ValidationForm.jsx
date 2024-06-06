@@ -1,4 +1,4 @@
-import { useFormik } from "formik"
+import { useFormik,Form } from "formik"
 import "./validationForm.scss";
 
 function ValidationForm({inputFields,initialValues,handleSubmitApiRequest,buttonText,validationSchema}){
@@ -11,12 +11,12 @@ function ValidationForm({inputFields,initialValues,handleSubmitApiRequest,button
        validationSchema
     })
     return(
-        <form className="container" onSubmit={handleSubmit}>
+        <Form className="container" onSubmit={handleSubmit}>
             {inputFields.map((inputField,index)=><div className="textField-container" key={index}><label htmlFor={inputField.id}>{inputField.labelText}</label><input id={inputField.id} onChange={handleChange} onBlur={handleBlur} type={inputField.type} placeholder={inputField.placeholder || ""} name={inputField.name} value={values[inputField.name]}/>
             {errors[inputField.name] && touched[inputField.name] && <p className="error">{errors[inputField.name]}</p>}
             </div>)}
             <button type="submit" disabled={isSubmitting}>{isSubmitting ? "Loading..." : buttonText }</button>
-        </form>
+        </Form>
     )
 }
 

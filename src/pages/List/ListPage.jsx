@@ -34,7 +34,7 @@ function ListPage(){
 
     if(isPending)return<ShimmerPostList></ShimmerPostList>
 
-    if(error)return<div>{error.response?.data.message}</div>
+    if(error)return<div>{error.message}</div>
 
     return(
         <>

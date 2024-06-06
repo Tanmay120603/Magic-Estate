@@ -2,7 +2,7 @@ import {useContext,useState} from "react"
 import getAddressFromLatAndLng from "../../utils/getAddressFromLatAndLng"
 import { toast } from "react-toastify"
 import { addPostInputFields, propertyTypes, userTypes,addPostInitialValues, petAllowance, utilitiesPolicy, depositPolicy } from "../../utils/constants"
-import { useFormik } from "formik"
+import { useFormik,Form } from "formik"
 import { addPostValidationSchema } from "../../utils/validationSchema"
 import axios from "axios"
 import "./addPostPage.scss"
@@ -75,7 +75,7 @@ function AddPostPage(){
     return(
         <div className="addPostPage-container">
         {isSubmitting && <Loader></Loader>}
-        <form onSubmit={handleSubmit} className="add-post-form">
+        <Form onSubmit={handleSubmit} className="add-post-form">
             <div className="all-textField-container">
             {addPostInputFields.map((inputField,index)=><div key={index} className="addPost-inputField">
             <label htmlFor={inputField.id}>{inputField.labelText}</label>
@@ -135,7 +135,7 @@ function AddPostPage(){
             <button type="submit" className="addPostPage-button">Add Post</button>
             </div>
 
-        </form>
+        </Form>
         <div className="right-addPost-section">
             <img src="/bg.png" alt="house-image"/>
         </div>
