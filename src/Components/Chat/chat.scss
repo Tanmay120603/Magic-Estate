@@ -35,6 +35,14 @@
             object-fit: cover;
             border-radius: 50%;
         }
+        .username-typing-container{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            .typing{
+                font-size: 12px;
+            }
+        }
     }
     .chat-messages{
         background-color: white;

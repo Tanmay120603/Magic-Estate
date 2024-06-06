@@ -16,9 +16,9 @@ function ProfilePage(){
     const [chatId,setChatId]=useState(state)
     const {data:chats,isFetching,error}=useQuery({queryKey:["chats"],queryFn:async()=>{
         const response=await axios.get(import.meta.env.VITE_SERVER_ENDPOINT+"/api/chats")
+        console.log("Profile Component--->",response.data)
         return response.data
     }})
-
     async function handleLogout(){
         setIsLoading(true)
         try{

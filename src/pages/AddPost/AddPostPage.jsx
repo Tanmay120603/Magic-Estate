@@ -35,7 +35,7 @@ function AddPostPage(){
             navigate(`/list/${response.data["postID"]}`)
         }
         catch(err){
-            console.log(err.response.data.message)
+            toast.error(err.response.data.message,{autoClose:2000})
         }
         finally{
             setSubmitting(false)

@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { decreaseCount } from "../../store/notificationSlice"
 import { useDispatch } from "react-redux"
 import { SocketContext } from "../../Context/Socket"
@@ -13,7 +13,7 @@ function Message({_id:chatId,users,messages,setChatId,lastMessage}){
     const {userAuth}=useContext(UserAuthContext)
     const receiver=users[0]
     const notificationCount=+messages.length
-
+    console.log("Message Component--->",notificationCount,messages,messages.length)
     function handleOpenChat(){
         socket.emit("chat-connected",{chatId,userId:userAuth?._id})
         setChatId(chatId)

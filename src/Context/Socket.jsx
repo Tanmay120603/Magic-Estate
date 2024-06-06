@@ -22,6 +22,7 @@ function Socket({children}){
         window.addEventListener("beforeunload",socketDisconnect)
 
         return ()=>{
+            console.log("User Disconnected")
             socketDisconnect()
             window.removeEventListener("beforeunload",socketDisconnect)
         }
